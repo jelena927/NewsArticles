@@ -22,22 +22,6 @@ import domain.Person;
 
 public class NewsArticleParser {
 
-	public static void main(String[] args) {
-		try {
-			NewsArticle article = parse("http://travel.nytimes.com/2013/08/11/travel/36-hours-in-lecce-italy.html");
-			System.out.println(article);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 	static public NewsArticle parse(String url) throws IOException, URISyntaxException, ParseException{
 
 		NewsArticle article = new NewsArticle();
@@ -92,7 +76,7 @@ public class NewsArticleParser {
 					content = element2.attributes().get("content");
 					switch (itemprop) {
 					case "url":
-						media.setUri(new URI(content));
+						media.setUri(new URI(element2.attributes().get("src")));
 						break;
 					case "description":
 						media.setDescription(content);
