@@ -44,8 +44,8 @@ public class NewsArticleParser {
 		
 		Document doc = Jsoup.connect(url).get();
 		
-		Elements htmlElement = doc.select("html");				
-		URI uri = new URI(htmlElement.get(0).attributes().get("itemid"));
+		Element el = doc.getElementsByAttributeValue("itemtype", "http://schema.org/NewsArticle").first();
+		URI uri = new URI(el.attributes().get("itemid"));
 		article.setUri(uri);
 		
 		Elements elements = doc.getElementsByAttribute("itemprop");	
