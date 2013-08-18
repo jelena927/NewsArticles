@@ -1,7 +1,5 @@
 package domain;
 
-import java.net.URL;
-
 import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;

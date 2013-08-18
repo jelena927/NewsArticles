@@ -1,7 +1,7 @@
 package domain;
 
-import java.net.URI;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -143,11 +143,13 @@ public class NewsArticle extends Thing {
 	
 	@Override
 	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		return super.toString() + "\nHeadline: " + headline + "\nalternativeHeadline: " + alternativeHeadline + 
 				"\nidentifier: " + identifier + "\narticleSection: " + articleSection + 
 				"\ndescription: " + description + "\ngenre: " + genre + 
 				"\ninLanguage: " + inLanguage + "\nabout: " + about + "\nassociatedMedia: " + associatedMedia + 
-				"\nauthor: " + author + "\ndateModified: " + dateModified + "\ndatePublished: " + datePublished + 
+				"\nauthor: " + author + "\ndateModified: " + sdf.format(dateModified) + 
+				"\ndatePublished: " + sdf.format(datePublished) + 
 				"\nprovider: " + provider + "\nthumbnailUrl: " + thumbnailUrl;
 	}
 }
