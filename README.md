@@ -1,4 +1,4 @@
 NewsArticles
 ============
 
-Aplication for advanced news search
+Application for advanced news search

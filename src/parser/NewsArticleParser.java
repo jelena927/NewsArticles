@@ -22,15 +22,19 @@ import domain.Person;
 
 public class NewsArticleParser {
 
-	static public NewsArticle parse(String url) throws IOException, URISyntaxException, ParseException{
+	static public NewsArticle parse(String url) throws Exception{
 
 		NewsArticle article = new NewsArticle();
 		
 		Document doc = Jsoup.connect(url).get();
 		
 		Element el = doc.getElementsByAttributeValue("itemtype", "http://schema.org/NewsArticle").first();
+		try{
 		URI uri = new URI(el.attributes().get("itemid"));
 		article.setUri(uri);
+		} catch (Exception e){
+			throw new Exception("nije newsArticle");
+		}
 		
 		Elements elements = doc.getElementsByAttribute("itemprop");	
 		for (Element element : elements) {
