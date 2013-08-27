@@ -7,7 +7,7 @@ import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import util.Constants;
 
-@Namespace(Constants.NS)
+@Namespace(Constants.SCHEMA)
 @RdfType("Thing")
 public class Thing {
 	

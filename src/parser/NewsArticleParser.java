@@ -1,7 +1,8 @@
 package parser;
 
-import java.net.URI;
-import java.net.URL;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.jsoup.Jsoup;
@@ -19,19 +20,15 @@ import domain.Person;
 
 public class NewsArticleParser {
 
-	static public NewsArticle parse(String url) throws Exception{
+	static public NewsArticle parse(String url) throws IOException, URISyntaxException, ParseException {
 
 		NewsArticle article = new NewsArticle();
 		
 		Document doc = Jsoup.connect(url).get();
 		
 		Element el = doc.getElementsByAttributeValue("itemtype", "http://schema.org/NewsArticle").first();
-		try{
-		URI uri = new URI(el.attributes().get("itemid"));
-		article.setUri(uri);
-		} catch (Exception e){
-			throw new Exception("nije newsArticle");
-		}
+		article.setUrl(el.attributes().get("itemid"));
+		article.setUri(URIGenerator.generate(article));
 		
 		Elements elements = doc.getElementsByAttribute("itemprop");	
 		for (Element element : elements) {
@@ -67,7 +64,7 @@ public class NewsArticleParser {
 				article.setIdentifier(content);
 				break;
 			case "thumbnailUrl":
-				article.setThumbnailUrl(new URL(content));
+				article.setThumbnailUrl(content);
 				break;
 			case "associatedMedia":
 				ImageObject media = new ImageObject();
@@ -77,7 +74,7 @@ public class NewsArticleParser {
 					content = element2.attributes().get("content");
 					switch (itemprop) {
 					case "url":
-						media.setUri(new URI(element2.attributes().get("src")));
+						media.setUrl(element2.attributes().get("src"));
 						break;
 					case "description":
 						media.setDescription(content);
@@ -95,6 +92,7 @@ public class NewsArticleParser {
 						break;
 					}
 				}
+				media.setUri(URIGenerator.generate(media));
 				article.setAssociatedMedia(media);
 				break;
 			case "author creator":
@@ -125,7 +123,7 @@ public class NewsArticleParser {
 						provider.setName(content);
 						break;
 					case "url":
-						provider.setUri(new URI(content));
+						provider.setUrl(content);
 						break;
 					case "tickerSymbol":
 						provider.setTickerSymbol(content);
@@ -134,6 +132,7 @@ public class NewsArticleParser {
 						break;
 					}
 				}
+				provider.setUri(URIGenerator.generate(provider));
 				article.setProvider(provider);
 				break;
 			case "about":

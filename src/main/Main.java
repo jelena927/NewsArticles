@@ -34,7 +34,7 @@ public class Main {
 			RDFModel.getInstance().printOut();
 			NewsArticle newsArticleCopy = (NewsArticle) RDFModel.getInstance().
 					load(article.getUri().toString());
-			System.out.println(newsArticleCopy);
+			System.err.println(newsArticleCopy);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

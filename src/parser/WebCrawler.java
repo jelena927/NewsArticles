@@ -53,7 +53,7 @@ public class WebCrawler {
 						NewsArticle article = NewsArticleParser.parse(articleUrl);
 						list.add(article);
 					} catch (Exception e) {
-						System.err.println(e.getMessage());
+						
 					}
 				}
 

@@ -11,7 +11,7 @@ import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import util.Constants;
 
-@Namespace(Constants.NS)
+@Namespace(Constants.SCHEMA)
 @RdfType("NewsArticle")
 public class NewsArticle extends Thing {
 
@@ -32,11 +32,11 @@ public class NewsArticle extends Thing {
 	@RdfProperty(Constants.SCHEMA + "articleSection")
 	private String articleSection;
 	@RdfProperty(Constants.SCHEMA + "thumbnailUrl")
-	private URL thumbnailUrl;
+	private String thumbnailUrl;
 	@RdfProperty(Constants.NS + "has_identifier")
 	private String identifier;
-//	@RdfProperty(Constants.NS + "has_id")
-//	private URI id;
+	@RdfProperty(Constants.SCHEMA + "url")
+	private String url;
 	@RdfProperty(Constants.SCHEMA + "author")
 	private Person author;
 	@RdfProperty(Constants.SCHEMA + "provider")
@@ -92,10 +92,10 @@ public class NewsArticle extends Thing {
 	public void setArticleSection(String articleSection) {
 		this.articleSection = articleSection;
 	}
-	public URL getThumbnailUrl() {
+	public String getThumbnailUrl() {
 		return thumbnailUrl;
 	}
-	public void setThumbnailUrl(URL thumbnailUrl) {
+	public void setThumbnailUrl(String thumbnailUrl) {
 		this.thumbnailUrl = thumbnailUrl;
 	}
 	public String getIdentifier() {
@@ -104,12 +104,14 @@ public class NewsArticle extends Thing {
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
-//	public URI getId() {
-//		return id;
-//	}
-//	public void setId(URI id) {
-//		this.id = id;
-//	}
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public Person getAuthor() {
 		return author;
 	}
@@ -150,6 +152,6 @@ public class NewsArticle extends Thing {
 				"\ninLanguage: " + inLanguage + "\nabout: " + about + "\nassociatedMedia: " + associatedMedia + 
 				"\nauthor: " + author + "\ndateModified: " + sdf.format(dateModified) + 
 				"\ndatePublished: " + sdf.format(datePublished) + 
-				"\nprovider: " + provider + "\nthumbnailUrl: " + thumbnailUrl;
+				"\nprovider: " + provider + "\nthumbnailUrl: " + thumbnailUrl + "\nurl: " + url;
 	}
 }

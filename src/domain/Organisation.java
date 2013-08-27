@@ -1,11 +1,13 @@
 package domain;
 
+import java.net.URL;
+
 import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import util.Constants;
 
-@Namespace(Constants.NS)
+@Namespace(Constants.SCHEMA)
 @RdfType("Organisation")
 public class Organisation extends Thing {
 	
@@ -13,8 +15,8 @@ public class Organisation extends Thing {
 	private String name;
 //	@RdfProperty(Constants.NS + "has_id")
 //	private String id;
-//	@RdfProperty(Constants.SCHEMA + "url")
-//	private URL url;
+	@RdfProperty(Constants.SCHEMA + "url")
+	private String url;
 	@RdfProperty(Constants.SCHEMA + "tickerSymbol")
 	private String tickerSymbol;
 	
@@ -30,12 +32,12 @@ public class Organisation extends Thing {
 //	public void setId(String id) {
 //		this.id = id;
 //	}
-//	public URL getUrl() {
-//		return url;
-//	}
-//	public void setUrl(URL url) {
-//		this.url = url;
-//	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public String getTickerSymbol() {
 		return tickerSymbol;
 	}
@@ -45,6 +47,6 @@ public class Organisation extends Thing {
 
 	@Override
 	public String toString() {
-		return super.toString() + ", name: " + name + ", tickerSymbol: " + tickerSymbol;
+		return super.toString() + ", name: " + name + ", tickerSymbol: " + tickerSymbol + ", url: " + url;
 	}
 }

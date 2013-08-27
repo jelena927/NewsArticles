@@ -1,11 +1,13 @@
 package domain;
 
+import java.net.URL;
+
 import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import util.Constants;
 
-@Namespace(Constants.NS)
+@Namespace(Constants.SCHEMA)
 @RdfType("ImageObject")
 public class ImageObject extends Thing {
 	
@@ -17,8 +19,8 @@ public class ImageObject extends Thing {
 	private double height;
 	@RdfProperty(Constants.SCHEMA + "description")
 	private String description;
-//	@RdfProperty(Constants.SCHEMA + "URL")
-//	private URL url;
+	@RdfProperty(Constants.SCHEMA + "url")
+	private String url;
 	
 	public String getCopyrightHolder() {
 		return copyrightHolder;
@@ -44,16 +46,16 @@ public class ImageObject extends Thing {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-//	public URL getIdentifier() {
-//		return url;
-//	}
-//	public void setIdentifier(URL url) {
-//		this.url = url;
-//	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 	@Override
 	public String toString() {
 		return super.toString() + ", copyrightHolder: " + copyrightHolder + ", description: " + description +
-				", width: " + width + ", height: " + height;
+				", width: " + width + ", height: " + height + ", url: " + url;
 	}
 }

@@ -5,7 +5,7 @@ import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
 import util.Constants;
 
-@Namespace(Constants.NS)
+@Namespace(Constants.SCHEMA)
 @RdfType("Person")
 public class Person extends Thing{
 	

@@ -17,7 +17,7 @@ public class RDFModel {
 	
 	private RDFModel (){
 		graph = ModelFactory.createDefaultModel();
-		graph.setNsPrefix("NewsArticle", Constants.NS);
+		//graph.setNsPrefix("NewsArticle", Constants.SCHEMA);
 		graph.setNsPrefix("schema", Constants.SCHEMA);
 		graph.setNsPrefix("xsd", Constants.XSD);
 		
