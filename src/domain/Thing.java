@@ -2,6 +2,7 @@ package domain;
 
 import java.net.URI;
 
+import thewebsemantic.Id;
 import thewebsemantic.Namespace;
 import thewebsemantic.RdfProperty;
 import thewebsemantic.RdfType;
@@ -11,7 +12,7 @@ import util.Constants;
 @RdfType("Thing")
 public class Thing {
 	
-	@RdfProperty(Constants.SCHEMA + "uri")
+	@Id
 	protected URI uri;
 
 	public URI getUri() {

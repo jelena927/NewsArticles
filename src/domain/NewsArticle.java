@@ -1,5 +1,6 @@
 package domain;
 
+import java.net.URI;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class NewsArticle extends Thing {
 	@RdfProperty(Constants.NS + "has_identifier")
 	private String identifier;
 	@RdfProperty(Constants.SCHEMA + "url")
-	private String url;
+	private URI url;
 	@RdfProperty(Constants.SCHEMA + "author")
 	private Person author;
 	@RdfProperty(Constants.SCHEMA + "provider")
@@ -104,11 +105,11 @@ public class NewsArticle extends Thing {
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
-	public String getUrl() {
+	public URI getUrl() {
 		return url;
 	}
 
-	public void setUrl(String url) {
+	public void setUrl(URI url) {
 		this.url = url;
 	}
 

@@ -1,6 +1,7 @@
 package parser;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +28,7 @@ public class NewsArticleParser {
 		Document doc = Jsoup.connect(url).get();
 		
 		Element el = doc.getElementsByAttributeValue("itemtype", "http://schema.org/NewsArticle").first();
-		article.setUrl(el.attributes().get("itemid"));
+		article.setUrl(new URI(el.attributes().get("itemid")));
 		article.setUri(URIGenerator.generate(article));
 		
 		Elements elements = doc.getElementsByAttribute("itemprop");	
